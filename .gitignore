@@ -1,5 +1,7 @@
 
 ny_taxi_postgres_data/
+# this is where the gcp credentials, ... are stored :
+gcp/ 
 
 .DS_Store
 .idea

@@ -1,0 +1,149 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Redshift Stack 
+Conditions:
+  SingleNode: !Equals [ !Ref RedshiftNodeCount, 1 ]
+Parameters:
+  SubnetA:
+    Type: String 
+    Type: AWS::EC2::Subnet::Id
+    Description: Make sure this belongs to the VPC specified below (e.g. 172.31.0.0/20)
+  SubnetB:
+    Type: String
+    Type: AWS::EC2::Subnet::Id
+    Description: Make sure this is different from the subnet above (e.g. 172.31.16.0/20)
+  VPCID:
+    Type: String
+    Type: AWS::EC2::VPC::Id
+    Description: Select a VPC (e.g. 172.31.0.0/16)
+  DataBucketName:
+    Type: String
+    Description: S3 data bucket name 
+  DatabaseName:
+    Type: String
+    Description: Database name 
+  MasterUsername:
+    Type: String
+    Description: Master user name for Redshift 
+    Default: admin
+  MasterUserPassword:
+    Type: String
+    Description: Master password for Redshift (used mixed case and numbers)
+    NoEcho: true 
+  DeveloperIPAddress:
+    Type: String 
+    Description: Your public IP address (see http://checkip.dyndns.org/)
+  RedshiftNodeCount:
+    Type: Number
+    Description: Number of Redshift nodes 
+    Default: 1
+    MinValue: 1
+    ConstraintDescription: Must be a number greater or equal to 1
+Resources:
+  RedshiftCluster: 
+    Type: AWS::Redshift::Cluster
+    Properties: 
+      ClusterSubnetGroupName: !Ref RedshiftClusterSubnetGroup
+      ClusterType: !If [ SingleNode, single-node, multi-node ]  
+      NumberOfNodes: !If [ SingleNode, !Ref 'AWS::NoValue', !Ref RedshiftNodeCount ] #'
+      DBName: !Sub ${DatabaseName}
+      IamRoles:
+        - !GetAtt RawDataBucketAccessRole.Arn
+      MasterUserPassword: !Ref MasterUserPassword
+      MasterUsername: !Ref MasterUsername
+      PubliclyAccessible: true
+      NodeType: dc1.large
+      Port: 5439
+      VpcSecurityGroupIds: 
+        - !Sub ${RedshiftSecurityGroup}
+      PreferredMaintenanceWindow: Sun:09:15-Sun:09:45
+  DataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${DataBucketName}
+  RawDataBucketAccessRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement: 
+          - 
+            Effect: Allow
+            Principal:
+              Service:
+                - redshift.amazonaws.com
+            Action:
+              - sts:AssumeRole
+  RawDataBucketRolePolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: RawDataBucketRolePolicy
+      PolicyDocument: 
+        Version: 2012-10-17
+        Statement:
+          - 
+            Effect: Allow
+            Action: s3:ListAllMyBuckets
+            Resource: arn:aws:s3:::*
+          - 
+            Effect: Allow
+            Action: 
+              - 's3:Get*'
+              - 's3:List*'
+            Resource: '*'
+          - 
+            Effect: Allow
+            Action: cloudwatch:*
+            Resource: "*"
+      Roles:
+        - !Ref RawDataBucketAccessRole  
+  RedshiftClusterSubnetGroup: 
+    Type: AWS::Redshift::ClusterSubnetGroup
+    Properties: 
+      Description: Cluster subnet group
+      SubnetIds: 
+        - !Ref SubnetA
+        - !Ref SubnetB
+  RedshiftSecurityGroup: 
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupDescription: Enable JDBC port
+      VpcId: !Ref VPCID
+      SecurityGroupIngress: 
+        - 
+          CidrIp: !Sub ${DeveloperIPAddress}/32 
+          FromPort: 5439
+          ToPort: 5439
+          IpProtocol: tcp
+          Description: IP address for your dev machine
+        - 
+          SourceSecurityGroupId: !Ref AccessToRedshiftSecurityGroup
+          FromPort: 5439
+          ToPort: 5439
+          IpProtocol: tcp
+          Description: Access to redshift  
+  AccessToRedshiftSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Access to Redshift access
+      VpcId: !Ref VPCID 
+  InternalSecurityGroupIngress:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      IpProtocol: tcp
+      FromPort: 0
+      ToPort: 65535
+      SourceSecurityGroupId: !Ref RedshiftSecurityGroup
+      GroupId: !Ref RedshiftSecurityGroup
+Outputs:
+  RedshiftClusterEndpointAddress:
+    Description: Redshift Cluster Endpoint Address 
+    Value: !GetAtt RedshiftCluster.Endpoint.Address 
+  RedshiftClusterEndpoint:
+    Description: Redshift Cluster Endpoint
+    Value:       
+      Fn::Join:
+        - ""
+        - - 'jdbc:redshift://'
+          - !GetAtt RedshiftCluster.Endpoint.Address 
+          - ':5439/'
+          - !Sub ${DatabaseName}
