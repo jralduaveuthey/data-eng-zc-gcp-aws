@@ -16,16 +16,12 @@ provider "aws" {
 
 resource "aws_s3_bucket" "data-lake-bucket" {
   bucket = "${local.data_lake_bucket}-${var.accout_id}"
-  # bucket = "my-tf-test-bucket"
-
   tags = {
     client      = var.client
   }
-
   versioning {
     enabled     = true
   }
-
   lifecycle_rule { 
     id      = "delete_old_objects"
     enabled = true
@@ -44,7 +40,6 @@ resource "aws_s3_bucket" "data-lake-bucket" {
 
 resource "aws_redshift_cluster" "cluster" {
   cluster_identifier = var.REDSHIFT_CLUSTER
-  # database_name      = "mydb"
   master_username    = "exampleuser"
   master_password    = "Mustbe8characters"
   node_type          = var.REDSHIFT_NODE_TYPE
@@ -54,13 +49,3 @@ resource "aws_redshift_cluster" "cluster" {
     client      = var.client
   }
 }
-
-# resource "aws_redshift_cluster" "cluster" {
-#   cluster_identifier = var.REDSHIFT_CLUSTER
-#   node_type = var.REDSHIFT_NODE_TYPE
-#   number_of_nodes = var.NUMBER_OF_NODES
-
-#   tags = {
-#     client      = var.client
-#   }
-# }
