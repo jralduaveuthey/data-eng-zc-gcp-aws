@@ -10,6 +10,12 @@ psycopg-binary = "==3.1.8"
 sqlalchemy = "==1.4.46"
 psycopg2 = "==2.9.5"
 ipython-sql = "*"
+prefect-aws = "==0.2.4"
+pyarrow = "==10.0.1"
+prefect = "==2.7.9"
+prefect-gcp = {extras = ["bigquery", "cloud_storage", "secret_manager"], version = "==0.2.4"}
+pandas-gbq = "==0.19.0"
+pandas-redshift = "==2.0.5"
 
 [dev-packages]
 

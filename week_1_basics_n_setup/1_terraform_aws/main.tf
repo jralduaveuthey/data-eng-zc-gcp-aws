@@ -38,6 +38,7 @@ resource "aws_s3_bucket" "data-lake-bucket" {
   force_destroy = true
 }
 
+# TODO: modify this so that it also includes a database
 resource "aws_redshift_cluster" "cluster" {
   cluster_identifier = var.REDSHIFT_CLUSTER
   master_username    = "exampleuser"
