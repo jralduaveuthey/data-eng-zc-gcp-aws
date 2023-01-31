@@ -4,6 +4,9 @@ ny_taxi_postgres_data/
 gcp/ 
 # this is where the csvs data is stored :
 nyc-tlc-data/*_csvs
+# do not commit secrets from terraform or from the config files
+*secrets.tf
+*config.cfg
 
 .DS_Store
 .idea

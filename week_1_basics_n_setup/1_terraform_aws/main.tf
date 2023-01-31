@@ -41,8 +41,8 @@ resource "aws_s3_bucket" "data-lake-bucket" {
 # TODO: modify this so that it also includes a database
 resource "aws_redshift_cluster" "cluster" {
   cluster_identifier = var.REDSHIFT_CLUSTER
-  master_username    = "exampleuser"
-  master_password    = "Mustbe8characters"
+  master_username    = var.master_username 
+  master_password    = var.master_password 
   node_type          = var.REDSHIFT_NODE_TYPE
   cluster_type       = "single-node"
   number_of_nodes = var.REDSHIFT_NUMBER_OF_NODES
