@@ -18,7 +18,7 @@ def fetch(dataset_url: str) -> pd.DataFrame:
 @task(log_prints=True)
 def clean(df=pd.DataFrame) -> pd.DataFrame:
     """Fix dtype issues"""
-    df["tpep_pickup_datetime"] = pd.to_datetime(df["tpep_pickup_datetime"])
+    df["lpep_pickup_datetime"] = pd.to_datetime(df[ltpep_pickup_datetime"])
     print(df.head(2))
     print(f"columns: {df.dtypes}")
     print(f"rows: {len(df)}")
@@ -47,9 +47,9 @@ def write_gcs(path: Path) -> None:
 @flow()
 def etl_web_to_gcs() -> None:
     """The main ETL function"""
-    color = "yellow"
-    year = 2019
-    month = 3
+    color = "green"
+    year = 2020
+    month = 1
     dataset_file = f"{color}_tripdata_{year}-{month:02}"
     dataset_url = f"https://github.com/DataTalksClub/nyc-tlc-data/releases/download/{color}/{dataset_file}.csv.gz"
 
@@ -63,5 +63,5 @@ if __name__ == "__main__":
     etl_web_to_gcs()
 
 # In the terminal run:
-# cd week_2_workflow_orchestration\prefect-zoomcamp\flows\02_gcp
+# cd week_2_workflow_orchestration\prefect-zoomcamp\flows\homework
 # python etl_web_to_gcs.py

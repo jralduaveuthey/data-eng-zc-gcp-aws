@@ -2,6 +2,8 @@
 ny_taxi_postgres_data/
 # this is where the gcp credentials, ... are stored :
 gcp/ 
+# this is where the csvs data is stored :
+nyc-tlc-data/*_csvs
 
 .DS_Store
 .idea
