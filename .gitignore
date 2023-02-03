@@ -8,6 +8,9 @@ nyc-tlc-data/*_csvs
 *secrets.tf
 *config.cfg
 
+# add this since it includes my ARN, ...
+week_3_data_warehouse/aws_private
+
 .DS_Store
 .idea
 *.tfstate
