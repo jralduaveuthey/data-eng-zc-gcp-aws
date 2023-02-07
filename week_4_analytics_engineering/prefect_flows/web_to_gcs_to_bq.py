@@ -157,17 +157,17 @@ def etl_parent_flow(
     
 
 if __name__ == "__main__":
-    # color = "yellow"
-    # months = [i for i in range(1, 13)]
-    # year = 2019
-    # etl_parent_flow(months, year, color)
-    # print(f"Finished 'etl_parent_flow' for {color} + {year}")
+    color = "yellow"
+    months = [i for i in range(1, 13)]
+    year = 2019
+    etl_parent_flow(months, year, color)
+    print(f"Finished 'etl_parent_flow' for {color} + {year}")
 
-    # color = "yellow"
-    # months = [i for i in range(1, 13)]
-    # year = 2020
-    # etl_parent_flow(months, year, color)
-    # print(f"Finished 'etl_parent_flow' for {color} + {year}")
+    color = "yellow"
+    months = [i for i in range(1, 13)]
+    year = 2020
+    etl_parent_flow(months, year, color)
+    print(f"Finished 'etl_parent_flow' for {color} + {year}")
 
     color = "green"
     months = [i for i in range(1, 13)]
