@@ -1,1 +1,1 @@
-Here the necessary scripts to get the BQ as it is necessary before starting this module. Dataset "trip_data_all" needs to have a couple of tables
+Here the necessary script to get the BQ as it is necessary before starting this module. Dataset "trip_data_all" in BQ needs to have a couple of tables
