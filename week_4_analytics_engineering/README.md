@@ -9,7 +9,9 @@ By this stage of the course you should have already:
 - A set of running pipelines ingesting the project dataset (week 3 completed): [Taxi Rides NY dataset](dataset.md)
     * Yellow taxi data - Years 2019 and 2020
     * Green taxi data - Years 2019 and 2020 
-    * fhv data - Year 2019. 
+    * fhv data - Year 2019.  
+    
+    #NOTE: to have this see week_4_analytics_engineering\prefect_flows\README.md
 
 _Note:_
   *  _A quick hack has been shared to load that data quicker, check instructions in [week3/extras](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/week_3_data_warehouse/extras)_

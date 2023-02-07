@@ -12,7 +12,7 @@ def extract_from_gcs(color: str, year: int, month: int) -> Path:
     gcs_block = GcsBucket.load("zoom-gcs")
     localpath = Path(__file__).parent 
     gcs_block.get_directory(from_path=gcs_path, local_path=localpath)
-     # to download a single file, use s3_block. # see https://prefecthq.github.io/prefect-gcp/
+     # to download a single file, use download_object_to_path. # see https://prefecthq.github.io/prefect-gcp/cloud_storage/#prefect_gcp.cloud_storage.GcsBucket.download_object_to_path
     return localpath / f"data/{color}/{color}_tripdata_{year}-{month:02}.parquet"
 
 
