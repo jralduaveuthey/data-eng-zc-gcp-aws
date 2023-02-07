@@ -1,3 +1,7 @@
+# My notes
+see https://app.clickup.com/t/863fw5kbr
+Since I have this github repo linked to my dbt project all the folders that are used in the dbt project are in the root of the repo. That is why I copied all the content from the folders under week_4_analytics_engineering to the root of the repo. And that is why there are many folders in the root of the repo, when actually only the week_* folders should be there. 
+
 # Week 4: Analytics Engineering 
 Goal: Transforming the data loaded in DWH to Analytical Views developing a [dbt project](taxi_rides_ny/README.md).
 [Slides](https://docs.google.com/presentation/d/1xSll_jv0T8JF4rYZvLHfkJXYqUjPtThA/edit?usp=sharing&ouid=114544032874539580154&rtpof=true&sd=true)
@@ -10,7 +14,7 @@ By this stage of the course you should have already:
     * Yellow taxi data - Years 2019 and 2020
     * Green taxi data - Years 2019 and 2020 
     * fhv data - Year 2019.  
-    
+
     #NOTE: to have this see week_4_analytics_engineering\prefect_flows\README.md
 
 _Note:_
