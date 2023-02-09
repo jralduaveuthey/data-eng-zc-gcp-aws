@@ -27,7 +27,7 @@ week_3_data_warehouse/aws_private
 .history
 **/ny_taxi_postgres_data/*
 serving_dir
-*.csv
+*data/*.csv
 .ipynb_checkpoints/
 !week_6_stream_processing/avro_example/data/rides.csv
 
