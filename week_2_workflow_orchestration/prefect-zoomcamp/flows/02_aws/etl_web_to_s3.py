@@ -44,7 +44,6 @@ def write_s3(path: Path) -> None:
     # and the blocks in Prefect UI for AWS Credentials and S3 Bucket. Important to choose the block type "S3 Bucket" and not "S3" !!!
     s3_block = S3Bucket.load("zoom-s3-jrv")
     s3_block.upload_from_path(from_path=path, to_path=path.parent.parent.name + '/' + path.parent.name + '/' + path.name)
-
     return
 
 

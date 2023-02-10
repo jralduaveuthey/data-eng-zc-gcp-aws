@@ -10,6 +10,7 @@ nyc-tlc-data/*_csvs
 
 # do not commit parquet files from flows
 week_4_analytics_engineering/prefect_flows/data/*
+week_4_analytics_engineering/aws/prefect_flows/data/*
 
 # add this since it includes my ARN, ...
 week_3_data_warehouse/aws_private

@@ -17,7 +17,7 @@ v_redshift_config = v_config["redshift-config"]
 
 @task(retries=3)
 def extract_from_s3(color: str, year: int, month: int) -> Path:
-    """Download trip data from GCS"""
+    """Download trip data from S3"""
     s3_path = "data"
     s3_block = S3Bucket.load("zoom-s3-jrv")
     localpath = Path(__file__).parent / "data"
@@ -38,7 +38,7 @@ def map_df_dtypes_to_sql(dtype):
     if dtype == 'float64':
         return 'FLOAT'
     elif dtype == 'int64':
-        return 'INTEGER'
+        return 'BIGINT'
     elif dtype == 'object':
         return 'VARCHAR(50)'
     elif dtype == 'datetime64[ns]':
@@ -174,8 +174,8 @@ def write_redshift(df: pd.DataFrame) -> None:
     # Not tried since ATTEMPT 4 works
 
 @flow()
-def etl_gcs_to_refshift():
-    """Main ETL flow to load data into Big Query"""
+def etl_s3_to_refshift():
+    """Main ETL flow to load data into Redshift"""
     color = "yellow"
     year = 2021
     month = 1
@@ -186,4 +186,4 @@ def etl_gcs_to_refshift():
 
 
 if __name__ == "__main__":
-    etl_gcs_to_refshift()
+    etl_s3_to_refshift()

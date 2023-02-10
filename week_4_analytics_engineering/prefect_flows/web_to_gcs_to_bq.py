@@ -145,10 +145,11 @@ def etl_parent_flow(
     months: list[int] = [1, 2], year: int = 2021, color: str = "yellow"
 ):
     logger = get_run_logger()
-    for month in months:
-        etl_web_to_gcs(year, month, color)
-        print(f"Finished 'etl_web_to_gcs' for  {color} + {year} + {month}")
-        logger.info(f"Finished 'etl_web_to_gcs' for  {color} + {year} + {month}")
+    #TODO: uncomment this if you also need the web_to_gcs flow
+    # for month in months:
+    #     etl_web_to_gcs(year, month, color)
+    #     print(f"Finished 'etl_web_to_gcs' for  {color} + {year} + {month}")
+    #     logger.info(f"Finished 'etl_web_to_gcs' for  {color} + {year} + {month}")
     for month in months:
         etl_gcs_to_bq(year, month, color)
         print(f"Finished 'etl_gcs_to_bq' for  {color} + {year} + {month}")

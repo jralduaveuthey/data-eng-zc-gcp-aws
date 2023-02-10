@@ -1,6 +1,7 @@
 # My notes
 see https://app.clickup.com/t/863fw5kbr
-Since I have this github repo linked to my dbt project all the folders that are used in the dbt project are in the root of the repo. That is why I copied all the content from the folders under week_4_analytics_engineering to the root of the repo. And that is why there are many folders in the root of the repo, when actually only the week_* folders should be there. 
+Since I have this github repo linked to my dbt project all the folders that are used in the dbt project are in the root of the repo. That is why I copied all the content from the folders under week_4_analytics_engineering to the root of the repo. And that is why there are many folders in the root of the repo, when actually only the week_* folders should be there.  
+Check the "Prerequisites" below to see what you need to have in BQ in order before starting with the steps in this week.
 
 # Week 4: Analytics Engineering 
 Goal: Transforming the data loaded in DWH to Analytical Views developing a [dbt project](taxi_rides_ny/README.md).
