@@ -15,6 +15,18 @@ week_4_analytics_engineering/aws/prefect_flows/data/*
 # add this since it includes my ARN, ...
 week_3_data_warehouse/aws_private
 
+# things from week 5 that are not needed
+week_5*/*.csv
+week_5*/*.gz
+#results from pyspark commands
+*part-*
+*_SUCCESS*
+
+week_5_batch_processing/code/data/*
+week_5_batch_processing/code/*.csv
+week_5_batch_processing/code/*.csv.gz
+
+
 .DS_Store
 .idea
 *.tfstate

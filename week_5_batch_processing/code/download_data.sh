@@ -1,3 +1,5 @@
+# Corresponding video: DE Zoomcamp 5.3.3 - (Optional) Preparing Yellow and Green Taxi Data
+# NOTE: I have not really used this script since it seems to be written for linux and anyway I have the csv.gz files under nyc-tlc-data
 
 set -e
 
