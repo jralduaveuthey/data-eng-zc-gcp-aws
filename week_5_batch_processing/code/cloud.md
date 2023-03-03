@@ -5,7 +5,7 @@
 Uploading data to GCS:
 
 ```bash
-gsutil -m cp -r pq/ gs://dtc_data_lake_de-zoomcamp-nytaxi/pq
+gsutil -m cp -r pq/ gs://dtc_data_lake_dtc-de-375211/pq
 ```
 
 Download the jar for connecting to GCS to any location (e.g. the `lib` folder):
@@ -75,9 +75,9 @@ TODO
 
 Params for the job:
 
-* `--input_green=gs://dtc_data_lake_de-zoomcamp-nytaxi/pq/green/2021/*/`
-* `--input_yellow=gs://dtc_data_lake_de-zoomcamp-nytaxi/pq/yellow/2021/*/`
-* `--output=gs://dtc_data_lake_de-zoomcamp-nytaxi/report-2021`
+* `--input_green=gs://dtc_data_lake_dtc-de-375211/pq/green/2021/*/`
+* `--input_yellow=gs://dtc_data_lake_dtc-de-375211/pq/yellow/2021/*/`
+* `--output=gs://dtc_data_lake_dtc-de-375211/report-2021`
 
 
 Using Google Cloud SDK for submitting to dataproc
@@ -87,11 +87,11 @@ Using Google Cloud SDK for submitting to dataproc
 gcloud dataproc jobs submit pyspark \
     --cluster=de-zoomcamp-cluster \
     --region=europe-west6 \
-    gs://dtc_data_lake_de-zoomcamp-nytaxi/code/06_spark_sql.py \
+    gs://dtc_data_lake_dtc-de-375211/code/06_spark_sql.py \
     -- \
-        --input_green=gs://dtc_data_lake_de-zoomcamp-nytaxi/pq/green/2020/*/ \
-        --input_yellow=gs://dtc_data_lake_de-zoomcamp-nytaxi/pq/yellow/2020/*/ \
-        --output=gs://dtc_data_lake_de-zoomcamp-nytaxi/report-2020
+        --input_green=gs://dtc_data_lake_dtc-de-375211/pq/green/2020/*/ \
+        --input_yellow=gs://dtc_data_lake_dtc-de-375211/pq/yellow/2020/*/ \
+        --output=gs://dtc_data_lake_dtc-de-375211/report-2020
 ```
 
 ### Big Query
@@ -108,11 +108,11 @@ Write results to big query ([docs](https://cloud.google.com/dataproc/docs/tutori
 gcloud dataproc jobs submit pyspark \
     --cluster=de-zoomcamp-cluster \
     --region=europe-west6 \
-    --jars=gs://spark-lib/bigquery/spark-bigquery-latest_2.12.jar
-    gs://dtc_data_lake_de-zoomcamp-nytaxi/code/06_spark_sql_big_query.py \
+    --jars=gs://spark-lib/bigquery/spark-bigquery-latest_2.12.jar \
+    gs://dtc_data_lake_dtc-de-375211/code/06_spark_sql_big_query.py \
     -- \
-        --input_green=gs://dtc_data_lake_de-zoomcamp-nytaxi/pq/green/2020/*/ \
-        --input_yellow=gs://dtc_data_lake_de-zoomcamp-nytaxi/pq/yellow/2020/*/ \
-        --output=trips_data_all.reports-2020
+        --input_green=gs://dtc_data_lake_dtc-de-375211/pq/green/2020/*/ \
+        --input_yellow=gs://dtc_data_lake_dtc-de-375211/pq/yellow/2020/*/ \
+        --output=trips_data_all_spark.reports-2020
 ```
 
