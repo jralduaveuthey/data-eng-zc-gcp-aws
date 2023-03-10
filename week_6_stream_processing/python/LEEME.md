@@ -1,0 +1,2 @@
+This is the Commit that I have downloaded from the repository: https://github.com/DataTalksClub/data-engineering-zoomcamp/commit/cbe18f2f0456079de774e610a9e2b702471ee964
+Every change in a commit after that must be manually checked and downloaded/copied if important.

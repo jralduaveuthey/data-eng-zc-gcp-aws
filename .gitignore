@@ -29,6 +29,15 @@ week_5_batch_processing/code/*.csv.gz
 week_5_batch_processing/homework_2023/fhvhv_tripdata_2021-06.csv*
 week_5_batch_processing/homework_2023/taxi_zone_lookup.csv
 
+week_6_stream_processing/api-key-*.txt
+week_6_stream_processing/python/videos_good_audio
+week_6_stream_processing/python/resources/rides.csv
+week_6_stream_processing/videos_AnalyticsExcellence/python-spark-streaming/5_structured/split-dataset/*.csv
+week_6_stream_processing/videos_AnalyticsExcellence/python-spark-streaming/*/checkpoint/*
+week_6_stream_processing/videos_AnalyticsExcellence/python-spark-streaming/*/data/*
+week_6_stream_processing/videos_AnalyticsExcellence/python-spark-streaming/5_structured/applicationHistory/local-*.inprogress
+
+
 .DS_Store
 .idea
 *.tfstate
