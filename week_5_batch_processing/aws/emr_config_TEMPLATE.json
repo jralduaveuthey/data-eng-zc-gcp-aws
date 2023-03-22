@@ -3,6 +3,11 @@
     "key_pair": "your-key-pair",
     "instance_type": "m5.xlarge",
     "instance_count": 3,
-    "s3_bucket": "your-s3-bucket"
+    "s3_bucket": "your-s3-bucket",
+    "cluster_id": "j-asdasdasd",
+    "redshift_url": "jdbc:redshift://my-cluster.abc123xyz789.us-west-2.redshift.amazonaws.com:5439/mydb?user=myuser&password=mypassword",
+    "redshift_table": "my_schema.my_table",
+    "aws_access_key_id": "your_aws_access_key_id",
+    "aws_secret_access_key": "your_aws_secret_access_key"
   }
   

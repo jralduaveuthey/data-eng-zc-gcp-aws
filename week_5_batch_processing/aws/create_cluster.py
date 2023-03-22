@@ -50,7 +50,7 @@ def update_emr_config(config, cluster_id):
     config['cluster_id'] = cluster_id
     with open(Path(os.path.abspath('emr_config.json')), 'w') as f:
         json.dump(config, f, indent=4)
-    print("Updated emr_config.json with the cluster ID")
+    print(f"Updated emr_config.json with the cluster ID: {cluster_id}")
 
 def main():
     with open(Path(os.path.abspath('emr_config.json')), 'r') as f:
