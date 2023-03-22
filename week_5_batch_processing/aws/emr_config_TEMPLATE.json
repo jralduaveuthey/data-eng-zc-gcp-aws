@@ -1,0 +1,8 @@
+{
+    "cluster_name": "Your-Cluster-Name",
+    "key_pair": "your-key-pair",
+    "instance_type": "m5.xlarge",
+    "instance_count": 3,
+    "s3_bucket": "your-s3-bucket"
+  }
+  
